@@ -11,7 +11,7 @@ $ grep -v '^$\|^#' mfetch | wc -l
 Configuration and Customization
 -------------------------------
 
-Assuming you use have a `~/.xinitrc` file it should work out of the box.
+Assuming you use a `~/.xinitrc` file to start your window manager everything should work out of the box. If anything doesn't work, then edit the script manually.
 
 Configuration is done through editing the script. The script itself is well documented and easily edited.
 

@@ -20,11 +20,12 @@ shell="${SHELL##*/}"
 # Get wm from xinitrc
 # regex '^exec\s*[a-zA-Z0-9]*$' =>
 # start of line
+# followed by any amount of whitespace
 # followed by exec
 # followed by any amount of whitespace
 # followed by any amount of alphanumerics
 # followed by end of line
-wm="$(grep '^exec\s*[a-zA-Z0-9]*$' "$HOME/.xinitrc" | sed 's/^exec\s*//g')"
+wm="$(grep '^\s*exec\s*[a-zA-Z0-9]*$' "$HOME/.xinitrc" | sed 's/^\s*exec\s*//g')"
 
 
 # Colors and palette method stolen from dylanaraps pftech
