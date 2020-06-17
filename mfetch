@@ -1,0 +1,62 @@
+#! /bin/sh
+# Disable warnings for unused variables
+# shellcheck disable=2034
+
+# Get user from USER variable or id command if var is empty
+user="${USER-$(id -u -n)}"
+
+# Get host from uname
+host="$(uname -n)"
+
+# Get os from /etc/os-release file
+os="$(grep '^PRETTY_NAME=".*"$' /etc/os-release | cut -d'"' -f2)"
+
+# Get kernel from uname
+kernel="$(uname -r)"
+
+# Get shell from SHELL variable
+shell="${SHELL##*/}"
+
+# Get wm from xinitrc
+# regex '^exec\s*[a-zA-Z0-9]*$' =>
+# start of line
+# followed by exec
+# followed by any amount of whitespace
+# followed by any amount of alphanumerics
+# followed by end of line
+wm="$(grep '^exec\s*[a-zA-Z0-9]*$' "$HOME/.xinitrc" | sed 's/^exec\s*//g')"
+
+
+# Colors and palette method stolen from dylanaraps pftech
+# https://github.com/dylanaraps/pfetch
+c0='[0m' 
+c1='[31m'; c2='[32m'
+c3='[33m'; c4='[34m'
+c5='[35m'; c6='[36m'
+c7='[37m'; c8='[38m'
+
+palette="[7m$c1 $c1 $c2 $c2 $c3 $c3 $c4 $c4 $c5 $c5 $c6 $c6 [m"
+
+# Define artwork
+ARTR1="${c5}     .-.         "
+ARTR2="${c5}  __/   (        "
+ARTR3="${c5}, '-.____\\       "
+ARTR4="${c5} u=='/  \\        "
+ARTR5="${c5}    /_/  \\       "
+ARTR6="${c5}  .-''   |"
+ARTR7="${c5} (  ${c4}____${c5}/${c4}_____   "
+
+# Output
+cat <<-EOF
+
+
+    ${ARTR1}${user}${c0}@${c5}${host}
+    ${ARTR2}${c4}os${c0}      ${os}
+    ${ARTR3}${c4}kernel${c0}  ${kernel}
+    ${ARTR4}${c4}shell${c0}   ${shell}
+    ${ARTR5}${c4}wm${c0}      ${wm}
+    ${ARTR6}
+    ${ARTR7}${palette}
+
+
+EOF
