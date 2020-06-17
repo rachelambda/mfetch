@@ -1,4 +1,4 @@
-<p align="center"><img alt="screenshot" src="https://github.com/depsterr/mfetch/blob/master/scrot/scrot3.png" width="350px"></p>
+<p align="center"><img alt="screenshot" src="https://github.com/depsterr/mfetch/blob/master/scrot/scrot3.png" width="700px"></p>
 <h1 align="center">mfetch</h1>
 <p align="center">A <a href="https://github.com/dylanaraps/pfetch">pfetch</a> lookalike</p>
 
