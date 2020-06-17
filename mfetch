@@ -2,6 +2,10 @@
 # Disable warnings for unused variables
 # shellcheck disable=2034
 
+# In addition to these variables you might find the following interesting
+# EDITOR default editor
+# TERM current terminal
+
 # Get user from USER variable or id command if var is empty
 user="${USER-$(id -u -n)}"
 
@@ -26,7 +30,6 @@ shell="${SHELL##*/}"
 # followed by any amount of alphanumerics
 # followed by end of line
 wm="$(grep '^\s*exec\s*[a-zA-Z0-9]*$' "$HOME/.xinitrc" | sed 's/^\s*exec\s*//g')"
-
 
 # Colors and palette method stolen from dylanaraps pftech
 # https://github.com/dylanaraps/pfetch
