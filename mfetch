@@ -38,6 +38,8 @@ c7='[37m'; c8='[38m'
 palette="[7m$c1 $c1 $c2 $c2 $c3 $c3 $c4 $c4 $c5 $c5 $c6 $c6 [m"
 
 # Define artwork
+# Default artwork is Snufkin by Shanaka Dias, taken from
+# https://www.asciiart.eu/books/moomintroll
 ARTR1="${c5}     .-.         "
 ARTR2="${c5}  __/   (        "
 ARTR3="${c5}, '-.____\\       "
