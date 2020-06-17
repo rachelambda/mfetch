@@ -14,3 +14,8 @@ Configuration and Customization
 Assuming you use have a `~/.xinitrc` file it should work out of the box.
 
 Configuration is done through editing the script. The script itself is well documented and easily edited.
+
+Artwork Credit
+--------------
+
+The default artwork is Snufkin by Shanaka Dias, taken from [the moomintroll page on ASCII Art Archive](https://www.asciiart.eu/books/moomintroll).
