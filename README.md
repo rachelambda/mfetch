@@ -2,6 +2,8 @@
 <h1 align="center">mfetch</h1>
 <p align="center">A <a href="https://github.com/dylanaraps/pfetch">pfetch</a> lookalike</p>
 
+![Shellcheck](https://github.com/depsterr/mfetch/workflows/Shellcheck/badge.svg)
+
 mfetch is a tiny fetch script using less than 30 sloc!
 ```sh
 $ grep -v '^$\|^#' mfetch | wc -l
