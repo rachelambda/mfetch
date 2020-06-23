@@ -23,7 +23,7 @@ kernel="$(uname -r)"
 shell="${SHELL##*/}"
 
 # Get wm from xinitrc
-wm=$(basename $(grep -E '^\s+exec\s+/' .xinitrc | sed 's/^\s*exec\s//g'))
+wm=$(basename $(grep -E '^\s*exec\s*' "$HOME/.xinitrc" | sed 's/^\s*exec\s*//g'))
 
 # Colors and palette method stolen from dylanaraps pftech
 # https://github.com/dylanaraps/pfetch
