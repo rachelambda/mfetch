@@ -14,7 +14,7 @@ host="$(uname -n)"
 
 # Get os from /etc/os-release file
 . /etc/os-release # load lib
-os="$(echo $PRETTY_NAME)"
+os="$PRETTY_NAME"
 
 # Get kernel from uname
 kernel="$(uname -r)"
