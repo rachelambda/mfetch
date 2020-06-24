@@ -50,17 +50,17 @@ ARTR3="${c5}, '-.____\\       "
 ARTR4="${c5} u=='/  \\        "
 ARTR5="${c5}    /_/  \\       "
 ARTR6="${c5}  .-''   |"
-ARTR7="${c5} (  ${c4}____${c5}/${c4}_____   "
+ARTR7="${c5} (  ${c6}____${c5}/${c6}_____   "
 
 # Output
 cat <<-EOF
 
 
     ${ARTR1}${user}${c0}@${c5}${host}
-    ${ARTR2}${c4}os${c0}      ${os}
-    ${ARTR3}${c4}kernel${c0}  ${kernel}
-    ${ARTR4}${c4}shell${c0}   ${shell}
-    ${ARTR5}${c4}wm${c0}      ${wm}
+    ${ARTR2}${c6}os${c0}      ${os}
+    ${ARTR3}${c6}kernel${c0}  ${kernel}
+    ${ARTR4}${c6}shell${c0}   ${shell}
+    ${ARTR5}${c6}wm${c0}      ${wm}
     ${ARTR6}
     ${ARTR7}${palette}
 
