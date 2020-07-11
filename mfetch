@@ -13,7 +13,8 @@ user="${USER-$(id -u -n)}"
 host="$(uname -n)"
 
 # Get os from /etc/os-release file
-os="$(grep '^PRETTY_NAME=".*"$' /etc/os-release | cut -d'"' -f2)"
+. /etc/os-release # load lib
+os="$PRETTY_NAME"
 
 # Get kernel from uname
 kernel="$(uname -r)"
@@ -22,18 +23,11 @@ kernel="$(uname -r)"
 shell="${SHELL##*/}"
 
 # Get wm from xinitrc
-# regex '^exec\s*[a-zA-Z0-9]*$' =>
-# start of line
-# followed by any amount of whitespace
-# followed by exec
-# followed by any amount of whitespace
-# followed by any amount of alphanumerics
-# followed by end of line
-wm="$(grep '^\s*exec\s*[a-zA-Z0-9]*$' "$HOME/.xinitrc" | sed 's/^\s*exec\s*//g')"
+wm=$(basename $(grep -E '^\s*exec\s*' "$HOME/.xinitrc" | sed 's/^\s*exec\s*//g'))
 
 # Colors and palette method stolen from dylanaraps pftech
 # https://github.com/dylanaraps/pfetch
-c0='[0m' 
+c0='[0m'
 c1='[31m'; c2='[32m'
 c3='[33m'; c4='[34m'
 c5='[35m'; c6='[36m'
