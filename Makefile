@@ -2,7 +2,7 @@ PREFIX?=/usr
 BIN?=$(PREFIX)/bin
 
 default:
-	@printf "Usage:\n\tmake install\tinstall mfetch\n\tmake uninstall\tuninstall mfetch\n"
+	@printf "targets:\n  make install\n  make uninstall\n"
 
 install:
 	install -Dm755 mfetch $(BIN)/mfetch

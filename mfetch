@@ -1,62 +1,32 @@
-#! /bin/sh
-# Disable warnings for unused variables
-# shellcheck disable=2034
-
-# In addition to these variables you might find the following interesting
-# EDITOR default editor
-# TERM current terminal
-
-# Get user from USER variable or id command if var is empty
-user="${USER-$(id -u -n)}"
-
-# Get host from uname
-host="$(uname -n)"
-
-# Get os from /etc/os-release file
-. /etc/os-release # load lib
-os="$PRETTY_NAME"
-
-# Get kernel from uname
-kernel="$(uname -r)"
-
-# Get shell from SHELL variable
-shell="${SHELL##*/}"
+#!/bin/sh
+# read system info
+read -r host < /proc/sys/kernel/hostname
+read -r kernel < /proc/sys/kernel/osrelease
+. /etc/os-release
 
 # Get wm from xinitrc
-wm=$(basename $(grep -E '^\s*exec\s*' "$HOME/.xinitrc" | sed 's/^\s*exec\s*//g'))
+while read -r line; do
+    [ "${line#exec }" = "$line" ] || wm="${line#exec }"
+done < "$HOME/.xinitrc"
 
 # Colors and palette method stolen from dylanaraps pftech
 # https://github.com/dylanaraps/pfetch
-c0='[0m'
+c0='[0m';
 c1='[31m'; c2='[32m'
 c3='[33m'; c4='[34m'
 c5='[35m'; c6='[36m'
 c7='[37m'; c8='[38m'
-
 palette="[7m$c1 $c1 $c2 $c2 $c3 $c3 $c4 $c4 $c5 $c5 $c6 $c6 [m"
 
-# Define artwork
-# Default artwork is Snufkin by Shanaka Dias, taken from
-# https://www.asciiart.eu/books/moomintroll
-ARTR1="${c5}     .-.         "
-ARTR2="${c5}  __/   (        "
-ARTR3="${c5}, '-.____\\       "
-ARTR4="${c5} u=='/  \\        "
-ARTR5="${c5}    /_/  \\       "
-ARTR6="${c5}  .-''   |"
-ARTR7="${c5} (  ${c6}____${c5}/${c6}_____   "
-
 # Output
-cat <<-EOF
+printf '%s\n' "
 
+    ${c5}     .-.         ${USER}${c0}@${c5}${host}
+    ${c5}  __/   (        ${c6}os${c0}      ${PRETTY_NAME}
+    ${c5}, '-.____\\       ${ARTR3}${c6}kernel${c0}  ${kernel}
+    ${c5} u=='/  \\        ${c6}shell${c0}   ${SHELL##*/}
+    ${c5}    /_/  \\       ${c6}wm${c0}      ${wm}
+    ${c5}  .-''   |
+    ${c5} (  ${c6}____${c5}/${c6}_____   ${palette}
 
-    ${ARTR1}${user}${c0}@${c5}${host}
-    ${ARTR2}${c6}os${c0}      ${os}
-    ${ARTR3}${c6}kernel${c0}  ${kernel}
-    ${ARTR4}${c6}shell${c0}   ${shell}
-    ${ARTR5}${c6}wm${c0}      ${wm}
-    ${ARTR6}
-    ${ARTR7}${palette}
-
-
-EOF
+"
