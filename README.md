@@ -5,9 +5,11 @@
 ![Shellcheck](https://github.com/depsterr/mfetch/workflows/Shellcheck/badge.svg)
 
 mfetch is a tiny fetch script using less than 30 sloc!
-```sh
-$ grep -v '^$\|^#' mfetch | wc -l
-21
+
+## Install
+```git clone https://github.com/depsterr/mfetch
+cd mfetch/
+make install
 ```
 
-It assumes you're launching your wm by having it be exec'd in `~/.xinitrc`
+
