@@ -4,10 +4,8 @@ read -r host < /proc/sys/kernel/hostname
 read -r kernel < /proc/sys/kernel/osrelease
 . /etc/os-release
 
-# Get wm from xinitrc
-while read -r line; do
-    [ "${line#exec }" = "$line" ] || wm="${line#exec }"
-done < "$HOME/.xinitrc"
+wm=$XDG_CURRENT_DESKTOP
+[ "$wm" ] || wm=$DESKTOP_SESSION
 
 # Colors and palette method stolen from dylanaraps pftech
 # https://github.com/dylanaraps/pfetch
