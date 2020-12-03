@@ -8,7 +8,7 @@ read -r kernel < /proc/sys/kernel/osrelease
 wm=$XDG_CURRENT_DESKTOP
 [ "$wm" ] || wm=$DESKTOP_SESSION
 
-# Colors and palette method stolen from dylanaraps pftech
+# Colors and palette method stolen from dylanaraps pfetch
 # https://github.com/dylanaraps/pfetch
 c0='[0m';
 c1='[31m'; c2='[32m'
