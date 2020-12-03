@@ -8,7 +8,7 @@ mfetch is a tiny fetch script using less than 30 sloc!
 
 ## Install
 ```
-git clone https://github.com/depsterr/mfetch
+git clone https://github.com/Jimmysit0/mfetch
 cd mfetch/
 make install
 ```
